@@ -1,2 +1,4 @@
 /Dataset
 .idea/
+*.pyc
+*.h5
