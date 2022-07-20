@@ -77,3 +77,16 @@ def prepare_hog(root_directory):
 
     return train_images, np.asarray(train_labels), test_images, np.asarray(test_labels)
 
+
+def prepare_heatmap(root_directory):
+    test_image_paths = []
+    # traverse root directory, and list directories as dirs and files as files
+    for root, dirs, files in os.walk(root_directory):
+        for file in files:
+            path = f'{root}\\{file}'
+            print('path: ', path)
+            test_image_paths.append(path)
+    print(test_image_paths[0])
+    return test_image_paths
+
+

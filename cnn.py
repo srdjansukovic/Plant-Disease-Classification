@@ -6,12 +6,17 @@ import seaborn as sb
 import pandas as pd
 from cnn_util import create_classifier
 
+from Heatmap.gradcam import apply_gradcam
+
+
 train_images, train_labels, test_images, test_labels = prepare(root_directory='Dataset')
 
-classifier = create_classifier()
-classifier.fit(train_images, train_labels, batch_size=32, epochs=15)
-classifier.save('15_128_128_rc.h5')
-# classifier = load_model('15_128_128_gray.h5')
+# classifier = create_classifier()
+# classifier.fit(train_images, train_labels, batch_size=32, epochs=15)
+# classifier.save('15_128_128_rc2.h5')
+classifier = load_model('15_128_128_rc.h5')
+
+# apply_gradcam(classifier)
 
 prediction = classifier.predict(test_images)
 winners = list(map(lambda win: list(win).index(max(win)), prediction))
