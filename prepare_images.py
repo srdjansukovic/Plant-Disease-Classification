@@ -15,9 +15,9 @@ def prepare(root_directory):
         path = root.split(os.sep)
         for file in files:
             image = cv2.imread(root + '\\' + file)
-            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             image = cv2.resize(image, (128, 128))
-            image = np.reshape(image, image.shape + (1,))
+            # image = np.reshape(image, image.shape + (1,))
             if 'train' in root:
                 train_images.append(image)
                 train_labels.append(plant_classes.index(path[-1]))
